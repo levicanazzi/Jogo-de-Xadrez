@@ -2,17 +2,17 @@
 {
     class Posicao
     {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
+        public int Linhas { get; set; }
+        public int Colunas { get; set; }
 
         public Posicao(int linha, int coluna)
         {
-            Linha = linha;
-            Coluna = coluna;
+            Linhas = linha;
+            Colunas = coluna;
         }
         public override string ToString()
         {
-            return Linha + ", " + Coluna;
+            return Linhas + ", " + Colunas;
         }
     }
 }
