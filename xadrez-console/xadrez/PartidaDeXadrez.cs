@@ -143,6 +143,22 @@ namespace xadrez
             {
                 Xeque = true;
             }
+
+            Peca p = Tab.TabPeca(destino);
+
+            // #Jogada especial promocao
+            if (p is Peao)
+            {
+                if (p.Cor == Cor.Branca && destino.Linhas == 0 || p.Cor == Cor.Preta && destino.Linhas == 7)
+                {
+                    p = Tab.RetirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(p.Cor, Tab);
+                    Tab.ColocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
+            }
+
             else
             {
                 Xeque = false;
@@ -156,8 +172,6 @@ namespace xadrez
                 Turno++;
                 MudaJogador();
             }
-
-            Peca p = Tab.TabPeca(destino);
 
             // #Jogada especial En Passant
             if (p is Peao && destino.Linhas == origem.Linhas - 2 || destino.Linhas == origem.Linhas + 2)
